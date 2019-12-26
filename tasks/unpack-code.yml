@@ -1,0 +1,15 @@
+platform: linux
+image_resource:
+ type: docker-image
+ source: { repository: ubuntu }
+inputs:
+ - name: artifact-repo
+outputs:
+ - name: extracted-package
+run:
+ path: sh
+ args:
+  - -exec
+  - |
+   tar -xvzf ./artifact-repo/*.tgz -C ./extracted-package/
+   find .

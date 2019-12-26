@@ -1,0 +1,23 @@
+platform: linux
+image_resource:
+ type: docker-image
+ source:
+  repository: maven
+  tag: 3.6.3-ibmjava-8-alpine
+
+inputs:
+ - name: source-code
+
+outputs:
+ - name: tar-app
+
+run:
+ path: sh
+ args:
+  - -exec
+  - |
+   cd source-code
+   mvn clean package -DskipTests
+   cd ./target
+   tar -P -cvzf ../../tar-app/app.tgz *.jar
+   cd -
