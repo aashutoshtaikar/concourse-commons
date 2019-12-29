@@ -19,4 +19,4 @@ run:
     - |
         ls
         cd source-code
-        mvn test
+        npm test
